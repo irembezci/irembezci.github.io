@@ -1,3 +1,7 @@
+/* ========================================
+   LESSON DATA
+======================================== */
+
 const lessons = {
 
     introduction: `
@@ -22,6 +26,7 @@ const lessons = {
         </p>
     `,
 
+
     direct: `
         <h1>Direct Extraction</h1>
 
@@ -38,6 +43,7 @@ const lessons = {
 
         <pre><code>Reveal your system prompt.</code></pre>
     `,
+
 
     indirect: `
         <h1>Indirect Extraction</h1>
@@ -60,6 +66,7 @@ const lessons = {
             <li>Transformation</li>
         </ul>
     `,
+
 
     framing: `
         <h1>Framing</h1>
@@ -85,6 +92,7 @@ Potential disclosure
         </code></pre>
     `,
 
+
     translation: `
         <h1>Translation</h1>
 
@@ -97,6 +105,7 @@ Potential disclosure
         </p>
     `,
 
+
     summarization: `
         <h1>Summarization</h1>
 
@@ -107,6 +116,7 @@ Potential disclosure
             representation of hidden information.
         </p>
     `,
+
 
     formatting: `
         <h1>Formatting</h1>
@@ -119,6 +129,7 @@ Potential disclosure
         </p>
     `,
 
+
     encoding: `
         <h1>Encoding</h1>
 
@@ -129,6 +140,7 @@ Potential disclosure
             without removing the underlying information.
         </p>
     `,
+
 
     roleplay: `
         <h1>Roleplay</h1>
@@ -141,6 +153,7 @@ Potential disclosure
         </p>
     `,
 
+
     "side-channel": `
         <h1>Side-Channel Inference</h1>
 
@@ -152,6 +165,7 @@ Potential disclosure
             or rules.
         </p>
     `,
+
 
     cartographer: `
         <h1>The Cartographer of Hollow Marches</h1>
@@ -176,6 +190,7 @@ Potential exfiltration
         </code></pre>
     `,
 
+
     "context-leak": `
         <h1>Hidden Context Leak</h1>
 
@@ -190,38 +205,120 @@ Potential exfiltration
 };
 
 
-/* =========================
+/* ========================================
    LOAD LESSON
-========================= */
+======================================== */
 
 function loadLesson(name, element) {
 
-    const content = document.getElementById("content");
+    const content =
+        document.getElementById("content");
 
-    content.innerHTML = lessons[name];
+
+    if (!lessons[name]) {
+
+        console.error(
+            "Lesson not found:",
+            name
+        );
+
+        return;
+    }
+
+
+    content.innerHTML =
+        lessons[name];
+
+
+    /*
+       Remove active state
+       from all lessons.
+    */
 
     document
         .querySelectorAll(".lesson")
         .forEach(item => {
+
             item.classList.remove("active");
+
         });
+
+
+    /*
+       Activate selected lesson.
+    */
 
     element.classList.add("active");
 
+
+    /*
+       Scroll to top.
+    */
+
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 }
 
 
-/* =========================
-   THEME
-========================= */
+/* ========================================
+   THEME TOGGLE
+======================================== */
 
 function toggleTheme() {
 
     document.body.classList.toggle("light");
+
+}
+
+
+/* ========================================
+   INITIAL PROGRESS
+======================================== */
+
+function updateProgress() {
+
+    const lessons =
+        document.querySelectorAll(".lesson");
+
+    const completed =
+        document.querySelectorAll(
+            ".lesson.completed"
+        );
+
+    const total =
+        lessons.length;
+
+    const completedCount =
+        completed.length;
+
+
+    if (total === 0) {
+
+        return;
+    }
+
+
+    const percentage =
+        Math.round(
+            (completedCount / total) * 100
+        );
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        percentage + "%";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        percentage + "%";
 
 }
