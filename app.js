@@ -1,7 +1,7 @@
 const markdownFiles = {
     "data-exfiltration": {
         title: "Data Exfiltration",
-        file: "content/data-exfiltration.md"
+        file: "https://raw.githubusercontent.com/irembezci/data-exfiltration/main/README.md"
     }
 };
 
