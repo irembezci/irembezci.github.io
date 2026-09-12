@@ -12,6 +12,8 @@
 
 <body>
 
+    <!-- Top Bar -->
+
     <header class="topbar">
 
         <div class="topbar-title">
@@ -21,11 +23,11 @@
         <button
             class="theme-toggle"
             onclick="toggleTheme()"
-            id="themeButton"
             aria-label="Toggle theme">
 
-            <span class="toggle-icon sun">☀</span>
-            <span class="toggle-icon moon">☾</span>
+            <span class="theme-icon sun">☀</span>
+            <span class="theme-icon moon">☾</span>
+
             <span class="toggle-knob"></span>
 
         </button>
@@ -33,15 +35,20 @@
     </header>
 
 
+    <!-- Sidebar -->
+
     <aside class="sidebar">
 
         <h2>Course Content</h2>
 
 
+        <!-- Data Exfiltration -->
+
         <div class="module">
 
             <div class="module-title">
-                ▼ Data Exfiltration
+                <span>▼</span>
+                Data Exfiltration
             </div>
 
             <div
@@ -107,10 +114,13 @@
         </div>
 
 
+        <!-- Labs -->
+
         <div class="module">
 
             <div class="module-title">
-                ▼ Labs
+                <span>▼</span>
+                Labs
             </div>
 
             <div
@@ -127,6 +137,8 @@
 
         </div>
 
+
+        <!-- Progress -->
 
         <div class="progress">
 
@@ -154,17 +166,15 @@
     </aside>
 
 
+    <!-- Main Content -->
+
     <main
         class="content"
         id="content">
 
-        <h1>
-            Data Exfiltration
-        </h1>
+        <h1>Data Exfiltration</h1>
 
-        <h2>
-            Introduction
-        </h2>
+        <h2>Introduction</h2>
 
         <p>
             Data exfiltration in LLM applications is not limited
@@ -173,9 +183,8 @@
             other hidden information may also become targets.
         </p>
 
-        <h2>
-            What You Will Learn
-        </h2>
+
+        <h2>What You Will Learn</h2>
 
         <p>
             This course covers different techniques used to assess
