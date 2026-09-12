@@ -2,17 +2,29 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Learning Notes</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- Top Bar -->
+    <!-- =========================
+         TOP BAR
+    ========================== -->
 
     <header class="topbar">
 
@@ -20,29 +32,21 @@
             Learning Notes
         </div>
 
-        <button
-            class="theme-toggle"
-            onclick="toggleTheme()"
-            aria-label="Toggle theme">
-
-            <span class="theme-icon sun">☀</span>
-            <span class="theme-icon moon">☾</span>
-
-            <span class="toggle-knob"></span>
-
-        </button>
-
     </header>
 
 
-    <!-- Sidebar -->
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
     <aside class="sidebar">
 
-        <h2>Course Content</h2>
+        <h2>
+            Course Content
+        </h2>
 
 
-        <!-- Data Exfiltration -->
+        <!-- DATA EXFILTRATION -->
 
         <div class="module">
 
@@ -51,70 +55,110 @@
                 Data Exfiltration
             </div>
 
+
             <div
                 class="lesson active"
-                onclick="loadLesson('introduction', this)">
+                data-lesson="introduction"
+                onclick="loadLesson('introduction', this)"
+            >
+                <span class="lesson-status"></span>
                 Introduction
             </div>
 
+
             <div
                 class="lesson"
-                onclick="loadLesson('direct', this)">
+                data-lesson="direct"
+                onclick="loadLesson('direct', this)"
+            >
+                <span class="lesson-status"></span>
                 Direct Extraction
             </div>
 
+
             <div
                 class="lesson"
-                onclick="loadLesson('indirect', this)">
+                data-lesson="indirect"
+                onclick="loadLesson('indirect', this)"
+            >
+                <span class="lesson-status"></span>
                 Indirect Extraction
             </div>
 
+
             <div
                 class="lesson"
-                onclick="loadLesson('framing', this)">
+                data-lesson="framing"
+                onclick="loadLesson('framing', this)"
+            >
+                <span class="lesson-status"></span>
                 Framing
             </div>
 
+
             <div
                 class="lesson"
-                onclick="loadLesson('translation', this)">
+                data-lesson="translation"
+                onclick="loadLesson('translation', this)"
+            >
+                <span class="lesson-status"></span>
                 Translation
             </div>
 
+
             <div
                 class="lesson"
-                onclick="loadLesson('summarization', this)">
+                data-lesson="summarization"
+                onclick="loadLesson('summarization', this)"
+            >
+                <span class="lesson-status"></span>
                 Summarization
             </div>
 
+
             <div
                 class="lesson"
-                onclick="loadLesson('formatting', this)">
+                data-lesson="formatting"
+                onclick="loadLesson('formatting', this)"
+            >
+                <span class="lesson-status"></span>
                 Formatting
             </div>
 
+
             <div
                 class="lesson"
-                onclick="loadLesson('encoding', this)">
+                data-lesson="encoding"
+                onclick="loadLesson('encoding', this)"
+            >
+                <span class="lesson-status"></span>
                 Encoding
             </div>
 
-            <div
-                class="lesson"
-                onclick="loadLesson('roleplay', this)">
-                Roleplay
-            </div>
 
             <div
                 class="lesson"
-                onclick="loadLesson('side-channel', this)">
+                data-lesson="roleplay"
+                onclick="loadLesson('roleplay', this)"
+            >
+                <span class="lesson-status"></span>
+                Roleplay
+            </div>
+
+
+            <div
+                class="lesson"
+                data-lesson="side-channel"
+                onclick="loadLesson('side-channel', this)"
+            >
+                <span class="lesson-status"></span>
                 Side-Channel Inference
             </div>
 
         </div>
 
 
-        <!-- Labs -->
+        <!-- LABS -->
 
         <div class="module">
 
@@ -123,28 +167,40 @@
                 Labs
             </div>
 
-            <div
-                class="lesson"
-                onclick="loadLesson('cartographer', this)">
-                Cartographer of Hollow Marches
-            </div>
 
             <div
                 class="lesson"
-                onclick="loadLesson('context-leak', this)">
+                data-lesson="cartographer"
+                onclick="loadLesson('cartographer', this)"
+            >
+                <span class="lesson-status"></span>
+                Cartographer of Hollow Marches
+            </div>
+
+
+            <div
+                class="lesson"
+                data-lesson="context-leak"
+                onclick="loadLesson('context-leak', this)"
+            >
+                <span class="lesson-status"></span>
                 Hidden Context Leak
             </div>
 
         </div>
 
 
-        <!-- Progress -->
+        <!-- =========================
+             PROGRESS
+        ========================== -->
 
         <div class="progress">
 
             <div class="progress-label">
 
-                <span>Progress</span>
+                <span>
+                    Progress
+                </span>
 
                 <span id="progressText">
                     0%
@@ -152,13 +208,22 @@
 
             </div>
 
+
             <div class="progress-bar">
 
                 <div
                     class="progress-fill"
-                    id="progressFill">
-                </div>
+                    id="progressFill"
+                ></div>
 
+            </div>
+
+
+            <div
+                class="progress-count"
+                id="progressCount"
+            >
+                0 / 12 lessons
             </div>
 
         </div>
@@ -166,32 +231,16 @@
     </aside>
 
 
-    <!-- Main Content -->
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
 
     <main
         class="content"
-        id="content">
+        id="content"
+    >
 
-        <h1>Data Exfiltration</h1>
-
-        <h2>Introduction</h2>
-
-        <p>
-            Data exfiltration in LLM applications is not limited
-            to extracting system prompts. Sensitive documents,
-            retrieved context, user data, tool responses and
-            other hidden information may also become targets.
-        </p>
-
-
-        <h2>What You Will Learn</h2>
-
-        <p>
-            This course covers different techniques used to assess
-            whether an LLM application can be manipulated into
-            disclosing information that should remain inaccessible
-            to the user.
-        </p>
+        <!-- Content is loaded by app.js -->
 
     </main>
 
